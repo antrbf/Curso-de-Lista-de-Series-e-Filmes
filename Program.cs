@@ -23,10 +23,10 @@ namespace DIO.Series
                         AtualizarSerie();
                         break;
                     case "4":
-                        //ExcluirSerie();
+                        ExcluirSerie();
                         break;
                     case "5":
-                        //VisualizarSerie();
+                        VisualizarSerie();
                         break;
                     case "C":
                         Console.Clear();
@@ -40,11 +40,30 @@ namespace DIO.Series
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
             Console.ReadLine();
+        } 
+        private static void ExcluirSerie()
+        {
+            Console.Write("Digite o id da série: ");
+            int indiceSerie = int.Parse(Console.ReadLine());
+
+            repositorio.Exclui(indiceSerie);
+        }
+
+        private static void VisualizarSerie()
+        {
+            Console.Write("Digite o id da série: ");
+            int indiceSerie = int.Parse(Console.ReadLine());
+
+            var serie = repositorio.RetornaPorId(indiceSerie);
+
+            Console.WriteLine(serie);
+
         }
 
         private static void AtualizarSerie()
             {
-                Console.WriteLine("Digite o ID da série: ");
+                Console.Write("Digite o ID da série: ");
+                int indiceSerie = int.Parse(Console.ReadLine());
 
                 // https://docs.microsoft.com/pt-br/dotnet/api/system.enum.getvalues?viewnetcore-3.1
                 // https://docs.microsoft.com/pt-br/dotnet/api/system.enum.getname?viewnetcore-3.1
@@ -69,6 +88,7 @@ namespace DIO.Series
                                             titulo: entradaTitulo,
                                             ano: entradaAno,
                                             descricao: entradaDescricao);
+
                 repositorio.Atualiza(indiceSerie, atualizaSerie);
         }
 
@@ -86,7 +106,9 @@ namespace DIO.Series
 
             foreach (var serie in lista)
             {
-                Console.WriteLine("#ID (0): - (1)", serie.retornaId(), serie.retornaTitulo());
+                var excluido = serie.retornaExcluido();
+                if(!excluido)
+                Console.WriteLine("#ID (0): - (1) (2)", serie.retornaId(), serie.retornaTitulo(), (excluido ? "'Excluido'" : ""));
             }
         }
 
