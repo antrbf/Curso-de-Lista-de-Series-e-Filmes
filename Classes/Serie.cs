@@ -52,6 +52,5 @@ namespace DIO.Series
         public void Excluir() {
             this.Excluido = true;
         }
-
     }
 }

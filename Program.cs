@@ -47,7 +47,7 @@ namespace DIO.Series
             Console.Write("Digite o ID da série: ");
             int indiceSerie = int.Parse(Console.ReadLine());
 
-            foreach (int i in Enum.GetValues(typeof(Genero()));
+            foreach (int i in Enum.GetValues(typeof(Genero())));
             {
                 Console.WriteLine("{0}-{1}", i, Eneum.GetName(typeof(Genero), i));
             }
