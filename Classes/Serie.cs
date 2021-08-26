@@ -1,4 +1,3 @@
-namespace DIO.Series
 using System;
 
 {
